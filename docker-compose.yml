@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: "postgres:13.1"
+    environment:
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
+  web:
+    build:
+      context: .
+    environment:
+      PORT: 80
+    ports:
+      - ${WEB_PORT}:80
+    command: "lerna run start --scope @tuxsudo/sidegig-web --stream"
