@@ -29,4 +29,4 @@ services:
       main:
         aliases:
           - web
-    command: lerna exec --scope @tuxsudo/sidegig-models --stream "npx prisma migrate deploy --preview-feature && lerna run start --scope @tuxsudo/sidegig-web --stream"
+    command: lerna exec --scope @tuxsudo/sidegig-web --stream "npx prisma migrate deploy --preview-feature && lerna run start --scope @tuxsudo/sidegig-web --stream"

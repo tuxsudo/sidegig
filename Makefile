@@ -52,6 +52,10 @@ docker.infra.up:
 docker.infra.down:
 	@docker-compose rm -f -s postgres
 
+# stop the infra
+docker.infra.logs:
+	@docker-compose logs -f postgres
+
 # start the web server
 docker.web.up:
 	@docker-compose up -d web
@@ -82,33 +86,25 @@ docker.logs:
 #
 #
 
-# codegen
-local.models.codegen:
-	@lerna run codegen --scope @tuxsudo/sidegig-models --stream 
-
-# creates a new migration in sidegig-modules
-local.models.stage:
-	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
-		lerna run migrations.stage --scope @tuxsudo/sidegig-models --stream  
-
-# commits staged or unstaged migrations
-local.models.commit:
-	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
-		lerna run migrations.commit --scope @tuxsudo/sidegig-models --stream  
-
-# build the models bundle
-local.models.dist:
-	@lerna run dist --scope @tuxsudo/sidegig-models --stream
-
-# clean the models bundle
-local.models.clean:
-	@rm -rf packages/sidegig-models/dist
-
 # local development -- web
 local.web.dev: docker.web.down
 	@PORT=${WEB_PORT} \
 	DATABASE_URL="${DATABASE_URL_LOCAL}" \
 		lerna run dev --scope @tuxsudo/sidegig-web --stream 
+
+# codegen
+local.web.codegen:
+	@lerna run codegen --scope @tuxsudo/sidegig-web --stream 
+
+# stages a new migration (optional step)
+local.web.migrations.stage:
+	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
+		lerna run migrations.stage --scope @tuxsudo/sidegig-web --stream  
+
+# commits staged or unstaged migrations
+local.web.migrations.commit:
+	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
+		lerna run migrations.commit --scope @tuxsudo/sidegig-web --stream  
 
 # local build -- web
 local.web.dist:
@@ -117,7 +113,6 @@ local.web.dist:
 # clean the local web
 local.web.clean:
 	@rm -rf packages/web/.next
-
 
 # build all the things
 local.dist: local.models.dist local.web.dist

@@ -17,9 +17,6 @@
     "dist.es": "BABEL_ENV=es babel -x \".ts\" services -d dist/esm -D",
     "dist.declarations": "tsc --emitDeclarationOnly",
     "dist": "concurrently \"npm:dist.*\"",
-    "codegen": "prisma generate",
-    "migrations.stage": "prisma migrate dev --create-only --preview-feature",
-    "migrations.commit": "prisma migrate dev --preview-feature",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jared Anderson <jared@tuxsudo.com>",

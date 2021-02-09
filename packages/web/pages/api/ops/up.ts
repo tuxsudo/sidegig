@@ -1,4 +1,4 @@
-import { ping } from "@tuxsudo/sidegig-models";
+import { ping } from "../../../server/models";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
