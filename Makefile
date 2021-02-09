@@ -3,6 +3,11 @@
 include *.env
 export
 
+#
+#
+# project initialization
+#
+#
 
 # scripts to verify local dev is ready
 # if something fails, then install it
@@ -24,47 +29,108 @@ init.uninstall:
 # get yo shiz running
 init: init.prereqs init.install
 
+#
+#
+# docker
+#
+#
+
 # build docker images
-docker.build.web:
+docker.web.build:
 	@docker-compose build web
 
-docker.build: docker.build.web
+# build / rebuild the docker images
+# should be ran after code changes
+docker.build: docker.web.build
+	@echo "done"
 
 # intialize infra needed to develop
-docker.up.infra:
+docker.infra.up:
 	@docker-compose up -d postgres
 
 # stop the infra
-docker.down.infra:
+docker.infra.down:
 	@docker-compose rm -f -s postgres
 
-docker.up.web:
+# stop the infra
+docker.infra.logs:
+	@docker-compose logs -f postgres
+
+# start the web server
+docker.web.up:
 	@docker-compose up -d web
 
-docker.down.web:
+# end the web server
+docker.web.down:
 	@docker-compose rm -f -s web
 
+# logs for web
+docker.web.logs:
+	@docker-compose logs -f web
+
 # make up all docker elements
-docker.up: docker.up.infra docker.up.web
+docker.up: docker.infra.up docker.web.up
 	@echo "All up"
 
 # make down all docker elements
-docker.down: docker.down.infra docker.down.web
+docker.down: docker.infra.down docker.web.down
 	@echo "All down"
 
+# follow all docker logs
+docker.logs:
+	@docker-compose logs -f
+
+#
+#
+# local dev commands
+#
+#
+
 # local development -- web
-local.dev.web:
+local.web.dev: docker.web.down
 	@PORT=${WEB_PORT} \
+	DATABASE_URL="${DATABASE_URL_LOCAL}" \
 		lerna run dev --scope @tuxsudo/sidegig-web --stream 
 
-# local build -- web
-local.build.web:
-	@lerna run build --scope @tuxsudo/sidegig-web --stream
+# codegen
+local.web.codegen:
+	@lerna run codegen --scope @tuxsudo/sidegig-web --stream 
 
-# local clean up
-local.dev.clean:
+# stages a new migration (optional step)
+local.web.migrations.stage:
+	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
+		lerna run migrations.stage --scope @tuxsudo/sidegig-web --stream  
+
+# commits staged or unstaged migrations
+local.web.migrations.commit:
+	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
+		lerna run migrations.commit --scope @tuxsudo/sidegig-web --stream  
+
+# local build -- web
+local.web.dist:
+	@lerna run dist --scope @tuxsudo/sidegig-web --stream
+
+# clean the local web
+local.web.clean:
 	@rm -rf packages/web/.next
 
+# build all the things
+local.dist: local.web.dist
+
+# clean all the things
+local.clean: local.web.clean
+
+# codegen all the things
+local.codegen: local.web.codegen
+
+
+#
+#
 # debug
+#
+#
+
+# show currently configured env vars
 debug.env:
+	@echo "DATABASE_URL: $(DATABASE_URL)"
 	@echo "WEB_PORT: $(WEB_PORT)"

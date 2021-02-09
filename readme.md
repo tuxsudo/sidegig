@@ -27,6 +27,6 @@ make docker.up
 ### Begin local development of web server
 
 ```
-make local.dev.web
+make local.web.dev
 ```
 
