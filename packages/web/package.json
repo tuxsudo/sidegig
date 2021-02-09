@@ -12,6 +12,7 @@
   "author": "Jared Anderson <jared@tuxsudo.com>",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^2.16.1",
     "@tuxsudo/sidegig-models": "^1.0.0",
     "next": "^10.0.6",
     "react": "^17.0.1",

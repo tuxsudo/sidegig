@@ -88,12 +88,12 @@ local.models.codegen:
 
 # creates a new migration in sidegig-modules
 local.models.stage:
-	@DATABASE_URL="${DATABASE_URL_LOCAL_MIGRATIONS}" \
+	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
 		lerna run migrations.stage --scope @tuxsudo/sidegig-models --stream  
 
 # commits staged or unstaged migrations
 local.models.commit:
-	@DATABASE_URL="${DATABASE_URL_LOCAL_MIGRATIONS}" \
+	@DATABASE_URL="${DATABASE_URL_LOCAL}" \
 		lerna run migrations.commit --scope @tuxsudo/sidegig-models --stream  
 
 # build the models bundle
@@ -107,6 +107,7 @@ local.models.clean:
 # local development -- web
 local.web.dev: docker.web.down
 	@PORT=${WEB_PORT} \
+	DATABASE_URL="${DATABASE_URL_LOCAL}" \
 		lerna run dev --scope @tuxsudo/sidegig-web --stream 
 
 # local build -- web
