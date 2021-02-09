@@ -23,6 +23,8 @@ services:
     environment:
       - PORT=80
       - DATABASE_URL
+      - LOGGER_NAME
+      - LOGGER_LEVEL
     ports:
       - ${WEB_PORT}:80
     networks:

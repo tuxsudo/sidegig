@@ -86,6 +86,14 @@ docker.logs:
 #
 #
 
+
+# local development -- logger module
+local.logger.dist:
+	@lerna run dist --scope @tuxsudo/sidegig-logger --stream
+
+local.logger.clean:
+	@rm -rf packages/sidegig-logger/dist
+
 # local development -- web
 local.web.dev: docker.web.down
 	@PORT=${WEB_PORT} \
@@ -115,10 +123,10 @@ local.web.clean:
 	@rm -rf packages/web/.next
 
 # build all the things
-local.dist: local.web.dist
+local.dist: local.logger.dist local.web.dist
 
 # clean all the things
-local.clean: local.web.clean
+local.clean: local.logger.clean local.web.clean
 
 # codegen all the things
 local.codegen: local.web.codegen

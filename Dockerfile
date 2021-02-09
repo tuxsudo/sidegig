@@ -13,18 +13,20 @@ WORKDIR /usr/src/app
 # Install root deps
 COPY package*.json lerna.json /usr/src/app/
 
-# install web deps
+# prepare web
 RUN mkdir -p /usr/src/app/packages/web
 COPY packages/web/package*.json /usr/src/app/packages/web/
 
-# install module deps
-# RUN mkdir -p /usr/src/app/packages/sidegig-module
-# COPY packages/sidegig-module/package*.json /usr/src/app/packages/sidegig-module/
+# prepare logger module
+RUN mkdir -p /usr/src/app/packages/sidegig-logger
+COPY packages/sidegig-logger/package*.json /usr/src/app/packages/sidegig-logger/
 
+# install dependencies
 RUN lerna bootstrap
 
+# copy contennts
 COPY packages/web /usr/src/app/packages/web
-# COPY packages/sidegig-module /usr/src/app/packages/sidegig-module
+COPY packages/sidegig-logger /usr/src/app/packages/sidegig-logger
 
 # build the things
 RUN lerna run --stream codegen
