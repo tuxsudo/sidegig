@@ -23,7 +23,8 @@ init.install: init.prereqs
 
 # scripts to remove installed artifacts
 init.uninstall:
-	@rm -rf packages/*/node_modules
+	@rm -rf modules/*/node_modules
+	@rm -rf web/node_modules
 	@rm -rf node_modules
 
 # get yo shiz running
@@ -87,12 +88,12 @@ docker.logs:
 #
 
 
-# local development -- logger module
-local.logger.dist:
-	@lerna run dist --scope @tuxsudo/sidegig-logger --stream
+# local development -- modules
+local.modules.dist:
+	@lerna run dist --ignore @tuxsudo/sidegig-web --stream
 
-local.logger.clean:
-	@rm -rf packages/sidegig-logger/dist
+local.modules.clean:
+	@rm -rf modules/*/dist
 
 # local development -- web
 local.web.dev: docker.web.down
@@ -123,10 +124,10 @@ local.web.clean:
 	@rm -rf packages/web/.next
 
 # build all the things
-local.dist: local.logger.dist local.web.dist
+local.dist: local.modules.dist local.web.dist
 
 # clean all the things
-local.clean: local.logger.clean local.web.clean
+local.clean: local.modules.clean local.web.clean
 
 # codegen all the things
 local.codegen: local.web.codegen

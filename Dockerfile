@@ -14,19 +14,19 @@ WORKDIR /usr/src/app
 COPY package*.json lerna.json /usr/src/app/
 
 # prepare web
-RUN mkdir -p /usr/src/app/packages/web
-COPY packages/web/package*.json /usr/src/app/packages/web/
+RUN mkdir -p /usr/src/app/web
+COPY web/package*.json /usr/src/app/web/
 
 # prepare logger module
-RUN mkdir -p /usr/src/app/packages/sidegig-logger
-COPY packages/sidegig-logger/package*.json /usr/src/app/packages/sidegig-logger/
+RUN mkdir -p /usr/src/app/modules/sidegig-logger
+COPY modules/sidegig-logger/package*.json /usr/src/app/modules/sidegig-logger/
 
 # install dependencies
 RUN lerna bootstrap
 
 # copy contennts
-COPY packages/web /usr/src/app/packages/web
-COPY packages/sidegig-logger /usr/src/app/packages/sidegig-logger
+COPY web /usr/src/app/web
+COPY modules/sidegig-logger /usr/src/app/modules/sidegig-logger
 
 # build the things
 RUN lerna run --stream codegen
