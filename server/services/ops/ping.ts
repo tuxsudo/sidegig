@@ -1,4 +1,5 @@
-import { prisma } from "./prisma";
+import { prisma } from "../../../prisma";
+
 export class Service {
   async check(): Promise<boolean> {
     try {

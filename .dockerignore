@@ -1,4 +1,6 @@
 node_modules
 .next
-**/*/node_modules
-packages/*/dist
+Dockerfile
+docker-compose.yml
+Makefile
+readme.md

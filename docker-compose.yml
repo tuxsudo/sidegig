@@ -21,14 +21,13 @@ services:
     build:
       context: .
     environment:
-      - PORT=80
-      - DATABASE_URL
+      - DATABASE_URL=postgresql://user:password@pg:5432/sidegig?schema=public
       - LOGGER_NAME
       - LOGGER_LEVEL
     ports:
-      - ${WEB_PORT}:80
+      - 3000:3000
     networks:
       main:
         aliases:
           - web
-    command: lerna exec --scope @tuxsudo/sidegig-web --stream "npx prisma migrate deploy --preview-feature && lerna run start --scope @tuxsudo/sidegig-web --stream"
+    command: npm start

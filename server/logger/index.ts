@@ -6,9 +6,12 @@ const name =
   process?.env?.npm_package_name ??
   "unknown logger";
 
-const level: LogLevel = (process?.env?.LOGGER_LEVEL as LogLevel) ?? "info";
+const level: LogLevel =
+  (process?.env?.LOGGER_LEVEL?.toLocaleLowerCase() as LogLevel) ?? "info";
 
 export const logger = createLogger({
   name,
   level,
 });
+
+logger.info({ message: `Logging with level '${level}'` });

@@ -1,35 +1,26 @@
 FROM node:14
 
-ARG PORT=80
-EXPOSE ${PORT}
-
 # install system deps
-RUN npm i -g npm@7.5.2 lerna
+RUN npm i -g npm@7.5.2
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install root deps
-COPY package*.json lerna.json /usr/src/app/
-
-# prepare web
-RUN mkdir -p /usr/src/app/web
-COPY web/package*.json /usr/src/app/web/
-
-# prepare logger module
-RUN mkdir -p /usr/src/app/modules/sidegig-logger
-COPY modules/sidegig-logger/package*.json /usr/src/app/modules/sidegig-logger/
+COPY package*.json /usr/src/app/
 
 # install dependencies
-RUN lerna bootstrap
+RUN npm i
 
 # copy contennts
-COPY web /usr/src/app/web
-COPY modules/sidegig-logger /usr/src/app/modules/sidegig-logger
+COPY . /usr/src/app
 
 # build the things
-RUN lerna run --stream codegen
-RUN lerna run --stream dist
+RUN npm run codegen
+RUN npm run dist
+
+EXPOSE 3000
+CMD [ "npm", "start" ]
 
 

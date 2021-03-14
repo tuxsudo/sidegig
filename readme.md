@@ -5,28 +5,28 @@ A template for creating new web-based products
 
 ## Getting started
 
-Local development is managed via `make`, please see the [./Makefile](makefile) for a list an explanation of all commands.
+Dockerized dependencies & docker testing is managed via `make`, please see the [./Makefile](makefile) for a list and explanation of all commands.
 
 
-### Initialize local development
+### Initialize local development deps
 
-```shell
+```
 make init
 ```
 
-Resolve any missing dependencies identified by that make target.
+Resolve any issues reported
 
 
-### Bring up sidegig docker environment
-
-```
-make docker.up
-```
-
-
-### Begin local development of web server
+### Initialize docker environment
 
 ```
-make local.web.dev
+# setup & run infra dependencies (eg: postgres)
+make docker.infra
+
+# run NextJS in dev mode
+make local.web
+
+# or run NextJS in docker mode (prod testing)
+make docker.web
 ```
 
