@@ -4,11 +4,12 @@ init.prereqs:
 	@which docker > /dev/null || (echo "Please install docker" && exit 1)
 	@which docker-compose > /dev/null || (echo "Please install docker-compose" && exit 1)
 	@which node > /dev/null || (echo "Please install node" && exit 1)
+	@which yarn || (echo "Please install yarn" && exit 1)
 	@[ -f .env.local ] || echo "" > .env.local
 
 # scripts to initialize the project
 init.install: init.prereqs
-	@npm i
+	@yarn
 
 # scripts to remove installed artifacts
 init.uninstall:
@@ -67,11 +68,11 @@ docker.logs:
 # local development -- web
 local.web.dev: docker.web.down
 	@DATABASE_URL="postgresql://user:password@localhost:5432/sidegig?schema=public" \
-		npm run dev
+		yarn dev
 
 # codegen
 local.web.codegen:
-	@npm run codegen
+	@yarn codegen
 
 # shortcut to running in dev mode
 local.web: local.web.codegen local.web.dev

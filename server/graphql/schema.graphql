@@ -4,6 +4,7 @@
 
 type Counter {
   count: Int
+  id: ID
   lastModified: DateTime
 }
 

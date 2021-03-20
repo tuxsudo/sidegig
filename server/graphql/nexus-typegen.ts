@@ -71,6 +71,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 export interface NexusGenFieldTypes {
   Counter: { // field return type
     count: number | null; // Int
+    id: string | null; // ID
     lastModified: NexusGenScalars['DateTime'] | null; // DateTime
   }
   DecrementCounterResponse: { // field return type
@@ -91,6 +92,7 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   Counter: { // field return type name
     count: 'Int'
+    id: 'ID'
     lastModified: 'DateTime'
   }
   DecrementCounterResponse: { // field return type name
