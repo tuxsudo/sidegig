@@ -9,7 +9,9 @@ Makefile
 readme.md
 
 #testing artifacts
-jest.config.js
+jest.config.ts
 .jest
+.storybook
 **/*.test.ts
 **/*.test.tsx
+**/*.stories.tsx
