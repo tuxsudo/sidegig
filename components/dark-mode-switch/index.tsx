@@ -1,30 +1,30 @@
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
-import { ToggleSwitch } from "../toggle-switch";
-import { Light, Dark } from "../style/theme";
-import { color3, fontSize12, spacing8 } from "../style/variables";
 import { useGlobalState } from "../global-state";
 
-const StyledSwitch = styled.div`
+import { spacing8 } from "../style/variables";
+import { Light, Dark } from "../style/theme";
+import { ToggleSwitch } from "../toggle-switch";
+import { Label } from "../typography/label";
+
+const StyledSwitch = styled(Label)`
   align-items: center;
+  cursor: pointer;
   display: flex;
 `;
 
-const Small = styled.small`
-  color: ${color3};
-  font-size: ${fontSize12};
-  font-style: italic;
+const Text = styled.span`
   margin-right: ${spacing8};
 `;
 
-export function DarkModeSwitch(props: HTMLAttributes<HTMLDivElement>) {
+export function DarkModeSwitch(props: HTMLAttributes<HTMLLabelElement>) {
   const globalState = useGlobalState();
   const isLight = globalState?.theme === "light";
 
   return (
     <StyledSwitch {...props}>
-      <Small>dark mode</Small>
+      <Text>{isLight ? "light" : "dark"}</Text>
       <ToggleSwitch
         active={!isLight}
         onClick={() => globalState?.setTheme(isLight ? "dark" : "light")}

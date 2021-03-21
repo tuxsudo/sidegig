@@ -1,10 +1,10 @@
 import { HtmlHTMLAttributes } from "react";
 import styled from "styled-components";
-import { color4, color3, colorPrimary } from "../style/variables";
+import { colorBg2, colorNeutral, colorPrimary } from "../style/variables";
 import { A11y } from "../button/a11y";
 
 const Circle = styled.i<{ active?: boolean }>`
-  background: ${(props) => (props.active ? colorPrimary : color3)};
+  background: ${(props) => (props.active ? colorPrimary : colorNeutral)};
   border-radius: 50%;
   display: block;
   height: 1em;
@@ -15,10 +15,11 @@ const Circle = styled.i<{ active?: boolean }>`
 `;
 
 const Groove = styled(A11y)`
-  background: ${color4};
+  background: ${colorBg2};
   border-radius: 5px;
-  width: 1.75em;
+  cursor: pointer;
   height: 0.75em;
+  width: 1.75em;
 `;
 
 interface Props extends HtmlHTMLAttributes<HTMLButtonElement> {

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { color0, color6 } from "./variables";
+import { colorFg0, colorBg0, fontFamSans } from "./variables";
 
 export const Normalize = createGlobalStyle`
   /* Box sizing rules */
@@ -35,8 +35,9 @@ export const Normalize = createGlobalStyle`
 
   /* Set core body defaults */
   body {
-    background-color: ${color6};
-    color: ${color0};
+    background-color: ${colorBg0};
+    color: ${colorFg0};
+    font-family: ${fontFamSans};
     font-size: 16px;
     font-weight: normal;
     line-height: 1.5;

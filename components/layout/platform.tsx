@@ -1,12 +1,12 @@
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
+import { spacing8 } from "../style/variables";
 
 import { Menu } from "./menu";
-import { spacing4 } from "../style/variables";
 
 const StyledLayout = styled.div`
-  position: relative;
   min-height: 100vh;
+  position: relative;
   width: 100vw;
 `;
 
@@ -17,7 +17,12 @@ export function Platform({
   return (
     <StyledLayout {...props}>
       <Menu
-        style={{ position: "absolute", bottom: spacing4, right: spacing4 }}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+          padding: spacing8,
+        }}
       />
       {children}
     </StyledLayout>

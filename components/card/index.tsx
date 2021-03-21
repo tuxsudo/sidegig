@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { color5, spacing16 } from "../style/variables";
+import { colorBg1, spacing16 } from "../style/variables";
 
 export const Skeleton = styled.div`
-  background-color: ${color5};
-  border: 1px solid ${color5};
+  background-color: ${colorBg1};
+  border: 1px solid ${colorBg1};
   border-radius: 3px;
 `;
 

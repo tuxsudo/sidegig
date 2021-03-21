@@ -6,9 +6,11 @@ import { useCounterQuery } from "./data";
 import { MinusButton } from "./minus-button";
 import { PlusButton } from "./plus-button";
 
-import { color2, fontSize12, fontSize22, spacing32 } from "../style/variables";
+import { spacing32 } from "../style/variables";
 import { Card } from "../card";
+import { Small as StyledSmall } from "../typography/small";
 import { Stack } from "../stack";
+import { Hero } from "../typography/heading";
 
 const Controls = styled.div`
   align-items: center;
@@ -16,14 +18,7 @@ const Controls = styled.div`
   grid-template-columns: ${spacing32} 1fr ${spacing32};
 `;
 
-const Indicator = styled.strong`
-  font-size: ${fontSize22};
-  text-align: center;
-`;
-
-const Small = styled.small`
-  color: ${color2};
-  font-size: ${fontSize12};
+const Small = styled(StyledSmall)`
   display: block;
   text-align: end;
 `;
@@ -52,7 +47,7 @@ export function CounterForm(props: Record<string, any>) {
       <Stack gapSize={spacing32}>
         <Controls>
           <MinusButton />
-          <Indicator>{counter.count}</Indicator>
+          <Hero style={{ textAlign: "center" }}>{counter.count}</Hero>
           <PlusButton />
         </Controls>
 
