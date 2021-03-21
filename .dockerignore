@@ -1,6 +1,15 @@
+#regenerated things
 node_modules
 .next
+
+#local setup
 Dockerfile
 docker-compose.yml
 Makefile
 readme.md
+
+#testing artifacts
+jest.config.js
+.jest
+**/*.test.ts
+**/*.test.tsx
