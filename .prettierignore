@@ -1,0 +1,6 @@
+node_modules
+.next
+
+# codegen
+server/graphql/schema.graphql
+server/graphql/nexus-typegen.ts

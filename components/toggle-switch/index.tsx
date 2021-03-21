@@ -1,4 +1,4 @@
-import { HtmlHTMLAttributes, HTMLProps } from "react";
+import { HtmlHTMLAttributes } from "react";
 import styled from "styled-components";
 import { color4, color3, colorPrimary } from "../style/variables";
 import { A11y } from "../button/a11y";

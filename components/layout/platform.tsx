@@ -16,7 +16,9 @@ export function Platform({
 }: HTMLAttributes<HTMLDivElement>) {
   return (
     <StyledLayout {...props}>
-      <Menu style={{ position: "absolute", bottom: spacing4, right: spacing4 }} />
+      <Menu
+        style={{ position: "absolute", bottom: spacing4, right: spacing4 }}
+      />
       {children}
     </StyledLayout>
   );

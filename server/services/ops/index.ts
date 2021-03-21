@@ -1,4 +1,5 @@
 import { prisma } from "../../../prisma";
+import { logger } from "../../logger";
 
 export class OpsService {
   async ping(): Promise<boolean> {
@@ -6,7 +7,7 @@ export class OpsService {
       const [first] = await prisma.$queryRaw("select 1 as success");
       return first?.success === 1;
     } catch (err) {
-      console.log(err);
+      logger.error(err);
       return false;
     }
   }
