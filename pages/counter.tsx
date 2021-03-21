@@ -1,5 +1,10 @@
 import { CounterForm } from "../components/counter-form";
+import { Main } from "../components/layout/main";
 
 export default function CounterPage() {
-  return <CounterForm />;
+  return (
+    <Main>
+      <CounterForm />
+    </Main>
+  );
 }

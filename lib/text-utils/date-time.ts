@@ -4,5 +4,5 @@ import parseFn from "date-fns/parseISO";
 export function format(dateString: string) {
   const date = parseFn(dateString);
 
-  return formatFn(date, "M/d/yy h:m:s aaaa");
+  return formatFn(date, "M/d/yyyy hh:mm:ss aaaa");
 }

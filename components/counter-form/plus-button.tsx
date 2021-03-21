@@ -1,6 +1,8 @@
 import { useMutation, gql } from "@apollo/client";
 import { Increment as Mutation } from "../../types/gql/Increment";
 
+import { GhostButton } from "../button/ghost";
+
 const INCREMENT_MUTATION = gql`
   mutation Increment {
     incrementCounter {
@@ -21,13 +23,13 @@ export function useIncrementMutation() {
 export function PlusButton() {
   const mutation = useIncrementMutation();
   return (
-    <button
+    <GhostButton
       onClick={(e) => {
         e.preventDefault();
         mutation();
       }}
     >
       +
-    </button>
+    </GhostButton>
   );
 }

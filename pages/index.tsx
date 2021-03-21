@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Platform } from "../components/layout/platform";
 import { Logo } from "../components/logo";
 
 const Hero = styled.main`
@@ -11,8 +12,10 @@ const Hero = styled.main`
 
 export default function HomePage() {
   return (
-    <Hero>
-      <Logo />
-    </Hero>
+    <Platform>
+      <Hero>
+        <Logo />
+      </Hero>
+    </Platform>
   );
 }

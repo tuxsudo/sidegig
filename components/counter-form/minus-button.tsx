@@ -1,6 +1,8 @@
 import { useMutation, gql } from "@apollo/client";
 import { Decrement as Mutation } from "../../types/gql/Decrement";
 
+import { GhostButton } from "../button/ghost";
+
 const DECREMENT_MUTATION = gql`
   mutation Decrement {
     decrementCounter {
@@ -21,13 +23,13 @@ export function useDecrementMutation() {
 export function MinusButton() {
   const mutation = useDecrementMutation();
   return (
-    <button
+    <GhostButton
       onClick={(e) => {
         e.preventDefault();
         mutation();
       }}
     >
       -
-    </button>
+    </GhostButton>
   );
 }
