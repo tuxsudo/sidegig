@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { colorFg0, colorPrimary, spacing4, spacing8 } from "../style/variables";
+import {
+  colorFg0,
+  colorPrimary,
+  spacing4,
+  spacing8,
+} from "../../style/variables";
 
 export const GhostButton = styled.button`
   background-color: transparent;

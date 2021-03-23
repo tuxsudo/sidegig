@@ -1,4 +1,4 @@
-import { A11y } from "./a11y";
+import { A11y } from ".";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 describe("A11y button", () => {
