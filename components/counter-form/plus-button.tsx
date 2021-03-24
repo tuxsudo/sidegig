@@ -2,6 +2,7 @@ import { useMutation, gql } from "@apollo/client";
 import { Increment as Mutation } from "../../types/gql/Increment";
 
 import { GhostButton } from "../button/ghost";
+import { Icon } from "../icons/plus";
 
 const INCREMENT_MUTATION = gql`
   mutation Increment {
@@ -29,7 +30,7 @@ export function PlusButton() {
         mutation();
       }}
     >
-      +
+      <Icon />
     </GhostButton>
   );
 }

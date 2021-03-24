@@ -10,11 +10,15 @@ export const Link = styled.a<Props>`
   color: ${(props) => (props.active ? colorPrimary : colorFg0)};
   cursor: pointer;
   font-size: ${fontSize16};
+  font-weight: ${(props) => (props.active ? "bold" : "normal")};
   text-decoration: none;
 
   &:hover {
-    color: ${colorPrimary};
-    text-decoration: underline;
+    filter: brightness(1.5);
+  }
+
+  &:active {
+    filter: brightness(0.75);
   }
 `;
 
@@ -24,6 +28,7 @@ export const FauxLink = styled.button<Props>`
   color: ${(props) => (props.active ? colorPrimary : colorFg0)};
   cursor: pointer;
   font-size: ${fontSize16};
+  font-weight: ${(props) => (props.active ? "bold" : "normal")};
   text-decoration: none;
 
   &:hover {

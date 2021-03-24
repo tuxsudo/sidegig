@@ -22,6 +22,6 @@ export const GhostButton = styled.button`
   }
 
   &:active {
-    filter: opacity(0.75);
+    filter: brightness(0.75);
   }
 `;
