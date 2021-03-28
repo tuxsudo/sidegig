@@ -6,7 +6,7 @@ import { useCounterQuery } from "./data";
 import { MinusButton } from "./minus-button";
 import { PlusButton } from "./plus-button";
 
-import { spacing32 } from "../style/variables";
+import { spacing32, spacing64 } from "../style/variables";
 import { Card } from "../card";
 import { Small as StyledSmall } from "../typography/small";
 import { Stack } from "../stack";
@@ -15,7 +15,7 @@ import { Hero } from "../typography/heading";
 const Controls = styled.div`
   align-items: center;
   display: grid;
-  grid-template-columns: ${spacing32} 1fr ${spacing32};
+  grid-template-columns: ${spacing64} 1fr ${spacing64};
 `;
 
 const Small = styled(StyledSmall)`

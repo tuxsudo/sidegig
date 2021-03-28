@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { wrapSvg } from "./lib";
 
 function Svg({ color = "currentColor", ...props }) {
   return (
@@ -19,6 +19,4 @@ function Svg({ color = "currentColor", ...props }) {
   );
 }
 
-export const Icon = styled(Svg)`
-  display: block;
-`;
+export const MenuIcon = wrapSvg(Svg);

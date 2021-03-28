@@ -2,7 +2,7 @@ import { useMutation, gql } from "@apollo/client";
 import { Decrement as Mutation } from "../../types/gql/Decrement";
 
 import { GhostButton } from "../button/ghost";
-import { Icon } from "../icons/minus";
+import { MinusIcon } from "../icons/minus";
 
 const DECREMENT_MUTATION = gql`
   mutation Decrement {
@@ -30,7 +30,7 @@ export function MinusButton() {
         mutation();
       }}
     >
-      <Icon />
+      <MinusIcon />
     </GhostButton>
   );
 }

@@ -4,6 +4,8 @@ import { spacing8 } from "../style/variables";
 
 import { Menu } from "./menu";
 
+import { LoginButton } from "../session/login-button";
+
 const StyledLayout = styled.div`
   min-height: 100vh;
   position: relative;
@@ -16,6 +18,13 @@ export function Platform({
 }: HTMLAttributes<HTMLDivElement>) {
   return (
     <StyledLayout {...props}>
+      <LoginButton
+        style={{
+          position: "absolute",
+          right: spacing8,
+          top: spacing8,
+        }}
+      />
       <Menu
         style={{
           position: "absolute",

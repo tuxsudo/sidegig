@@ -4,7 +4,7 @@ import { Switches, Button } from ".";
 import { Light as LightMode } from "../../style/theme";
 
 export default {
-  title: "Switches",
+  title: "Buttons/Switches",
   // component: ToggleSwitch,
   // argTypes: { onClick: { action: "clicked" } },
 };

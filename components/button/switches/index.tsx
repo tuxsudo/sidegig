@@ -9,6 +9,8 @@ import {
   spacing16,
 } from "../../style/variables";
 
+import { Button as BaseButton } from "../lib";
+
 interface SwitchesProps {
   align?: "start" | "end" | "middle";
 }
@@ -22,23 +24,14 @@ export const Switches = styled.div<SwitchesProps>`
 interface ButtonProps {
   active?: boolean;
 }
-export const Button = styled.button.attrs((props) => ({
-  type: props.type || "button",
-}))<ButtonProps>`
+export const Button = styled(BaseButton)<ButtonProps>`
   cursor: pointer;
   background-color: ${(props) => (props.active ? colorPrimary : colorBg2)};
   border: 0;
+  border-radius: 0;
   color: ${(props) => (props.active ? "#fff" : colorFg1)};
   margin: 0;
   padding: ${spacing4} ${spacing16};
-
-  &:hover {
-    filter: brightness(1.5);
-  }
-
-  &:active {
-    filter: brightness(0.75);
-  }
 
   &:not(:first-child) {
     border-left: 1px solid ${colorBg0};

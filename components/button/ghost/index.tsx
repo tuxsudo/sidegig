@@ -1,19 +1,12 @@
 import styled from "styled-components";
-import {
-  colorFg0,
-  colorPrimary,
-  spacing4,
-  spacing8,
-} from "../../style/variables";
+import { colorFg0, colorPrimary } from "../../style/variables";
 
-export const GhostButton = styled.button`
+import { Button } from "../lib";
+
+export const GhostButton = styled(Button)`
   background-color: transparent;
-  border: 0;
-  border-radius: 2px;
   color: ${colorFg0};
-  cursor: pointer;
   outline-color: ${colorPrimary};
-  padding: ${spacing4} ${spacing8};
 
   &:hover,
   &:active {
