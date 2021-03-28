@@ -40,7 +40,9 @@ docker.web.build:
 
 # start the web server
 docker.web.up:
-	@docker-compose up -d web
+	@DATABASE_URL="postgresql://user:password@pg:5432/sidegig?schema=public" \
+	JWT_SECRET="this_a_secret_dont_use_in_rl" \
+	docker-compose up -d web
 
 # end the web server
 docker.web.down:

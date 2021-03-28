@@ -21,9 +21,12 @@ services:
     build:
       context: .
     environment:
-      - DATABASE_URL=postgresql://user:password@pg:5432/sidegig?schema=public
-      - LOGGER_NAME
+      - DATABASE_URL
+      - JWT_SECRET
       - LOGGER_LEVEL
+      - LOGGER_NAME
+      - NEXTAUTH_URL
+      - NEXTAUTH_URL_INTERNAL
     ports:
       - 3000:3000
     networks:
