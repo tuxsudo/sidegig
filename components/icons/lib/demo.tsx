@@ -1,6 +1,8 @@
 import { Light as LightMode } from "../../style/theme";
 import { spacing24 } from "../../style/variables";
 
+import { ArrowLeftIcon } from "../arrow-left";
+import { ArrowRightIcon } from "../arrow-right";
 import { MenuIcon } from "../menu";
 import { MinusIcon } from "../minus";
 import { PlusIcon } from "../plus";
@@ -23,6 +25,8 @@ export function Demo({
     <>
       {theme === "light" && <LightMode />}
       <Row {...props} align="start">
+        <ArrowLeftIcon size={size} color={color} />
+        <ArrowRightIcon size={size} color={color} />
         <MenuIcon size={size} color={color} />
         <MinusIcon size={size} color={color} />
         <PlusIcon size={size} color={color} />
