@@ -1,3 +1,10 @@
+# Grab, read & set any environment variables in optional .env file
+ifneq (,$(wildcard ./.env))
+	include .env
+	VARS = $(shell sed -ne 's/ *\#.*$$//; /./ s/=.*$$// p' .env )
+endif
+$(foreach v,$(VARS),$(eval $(shell echo export $(v)="$($(v))")))
+
 # scripts to verify local dev is ready
 # if something fails, then install it
 init.prereqs:
@@ -78,3 +85,13 @@ local.web.codegen:
 
 # shortcut to running in dev mode
 local.web: local.web.codegen local.web.dev
+
+
+# local migrations
+local.migrations.stage:
+	@DATABASE_URL="postgresql://user:password@localhost:5432/sidegig?schema=public" \
+		yarn migrations.stage
+
+local.migrations.commit:
+	@DATABASE_URL="postgresql://user:password@localhost:5432/sidegig?schema=public" \
+		yarn migrations.commit
