@@ -80,4 +80,25 @@ export const Normalize = createGlobalStyle`
       scroll-behavior: auto !important;
     }
   }
+
+  // Add initial custom styles for focused elements:
+  :is(a, button, input, textarea, summary) {
+    --outline-size: max(2px, 0.08em);
+    --outline-style: solid;
+    --outline-color: currentColor;
+  }
+
+  :is(a, button, input, textarea, summary):focus {
+    outline: var(--outline-size) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-offset, var(--outline-size));
+  }
+
+  :is(a, button, input, textarea, summary):focus-visible {
+    outline: var(--outline-size) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-offset, var(--outline-size));
+  }
+
+  :is(a, button, input, textarea, summary):focus:not(:focus-visible) {
+    outline: none;
+  }
 `;
